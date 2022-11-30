@@ -1,0 +1,20 @@
+<h2 class="title p-4">Historique</h2>
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Taux réel</th>
+        <th scope="col">Taux saisi</th>
+        <th scope="col">Valeur initiale</th>
+        <th scope="col">Valeur calculé</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let val of historyvals; let i = index">
+        <td>{{val.taux | number:'1.0-3'}}</td>
+        <td>{{val.force | number:'1.0-3'}}</td>
+        <td>{{val.price | number:'1.0-3'}} {{val.actualdevice}}</td>
+        <td>{{val.convertedprice | number:'1.0-3'}} {{val.device}}</td>
+      </tr>
+    </tbody>
+  </table>
+  

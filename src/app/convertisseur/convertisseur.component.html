@@ -1,0 +1,44 @@
+<div class="row counter">
+    <div class="col form">
+        <h2 class="title p-4">Convertisseur Euro/Dollar</h2>
+        <div class="form form-convert">
+            
+                <div class=" taux input-group input-group-sm">
+                    <div class="input-group-text m-0">Taux</div>
+                    <input placeholder="taux" class="form-control" type="number" value="{{taux | number:'1.0-3'}}"
+                        disabled>
+                </div>
+            
+                <div class="input-group input-group-sm">
+                    <input placeholder="montant" class="form-control" type="number" [(ngModel)]="price">
+                    <div class="input-group-text">{{actualdevice}}</div>
+                </div>
+        </div>
+        
+        <div class="">
+            <div class="btn-group input-group-sm" role="group">
+                <button type="button" [disabled]="price == undefined? true:false"  (click)="convert()">Convert</button>
+                <button type="button" [disabled]="price == undefined? true:false"  (click)="switch()"
+                    [ngStyle]="{'background-color': activeswitch ? 'rgb(89 90 212 / 77%)' : '#595ad4'}">Switch</button>
+            </div>
+        </div>
+        <div class="form justify-content-md-center">
+            <div class="form-convert">
+                <div class="input-group input-group-sm">
+                    <input placeholder="taux forcé" class="form-control-sm" type="number" [(ngModel)]="force">
+                </div>
+               <button type="button" [disabled]="price == undefined? true:false"   (click)="activeForce()"
+               [ngStyle]="{'background-color': !activeforce ? 'rgb(89 90 212 / 77%)' : '#595ad4'}">Active</button>
+        </div>
+        <div>
+            <div class="chronometer">
+                <div class="time">
+                    <span id="convertedprice">{{convertedprice | number:'1.0-3'}} </span>{{device}}
+                </div>
+            </div>
+        </div>
+        <div class="form btnend">
+            <button type="button" (click)="pause()">pause</button>
+        </div>
+    <app-history [historyvals]="historyvals"></app-history>
+</div>
